@@ -13,8 +13,8 @@ Using [Google console](https://console.developers.google.com/flows/enableapi?api
 ### Normal account
 You need to enable and download credentials files using [Google console](https://console.developers.google.com/flows/enableapi?apiid=slides.googleapis.com) or go to [Python Quickstart](https://developers.google.com/slides/quickstart/python) and choose enable slides API then download configurations.
 
-### Service account 
-- Create project 
+### Service account
+- Create project
 - Create credentials (type service account)
 You need to enable and download credentials files using  or go to [Python Quickstart](https://developers.google.com/slides/quickstart/python) and choose enable slides API then download configurations.
 - Download credentials (as json and save it anywhere on your filesystem)
@@ -32,13 +32,15 @@ You need to enable and download credentials files using  or go to [Python Quicks
 
 ## Example usage
 
-- Download basic release from https://github.com/hakimel/reveal.js
+- Download basic release from <https://github.com/hakimel/reveal.js>
 - Untar it into suitable directory (e.g `/tmp/revealjs`)
 - Get credentials from [Google API Console](https://console.developers.google.com/apis/credentials) and save it on your filesystem (e.g `/tmp/credentials.json`)
 - Convert using `slides2html`
+
 ```bash
 slides2html --website /tmp/revealjs --id 147sFqkzjr_caJrh5f4ZpRRdD0SZP32aGSBkfDNH31PM  --credfile ~/credentials.json
 ```
+
 - in `/tmp/revealjs` directory there will be entrypoint (customizable using `--indexfile` option) `147sFqkzjr_caJrh5f4ZpRRdD0SZP32aGSBkfDNH31PM.html` and directory named `147sFqkzjr_caJrh5f4ZpRRdD0SZP32aGSBkfDNH31PM`
 
 ```bash
@@ -78,18 +80,18 @@ slides2html --website /tmp/revealjs --id 147sFqkzjr_caJrh5f4ZpRRdD0SZP32aGSBkfDN
 ├── 26_g4b3e153e09_0_193.png
 ├── 27_g4b3e153e09_0_16.png
 └── 28_g4b3e153e09_0_0.png
-
-
 ```
 
 ### Usage with service account
 
 The only change you need is `--serviceaccount`
+
 ```bash
 slides2html --website /tmp/revealjs --id 1N8YWE7ShqmhQphT6L29-AcEKZfZg2QripM4L0AK8mSU --credfile service_credentials.json --serviceaccount
 ```
 
 ## Usage
+
 ```bash
 Usage: slides2html [OPTIONS]
 
@@ -103,15 +105,16 @@ Options:
   --themefile TEXT   use your own reveal.js theme
   --serviceaccount   use service account instead of normal oauth flow
   --background TEXT  background image to be used for all of the slides
-	--resize 'WIDTH,HEIGHT' width and height for the new size
+ --resize 'WIDTH,HEIGHT' width and height for the new size
   --help             Show this message and exit.
 
 ```
 
 ### resizing images
-Google allows exporting images as MEDIUM or LARGE if you want to do some resizing to specific size you can use `--resize` parameter and pass the new size in the form of `'newwidth, newheight'
+Google allows exporting images as MEDIUM or LARGE if you want to do some resizing to specific size you can use `--resize` parameter and pass the new size in the form of `'newwidth, newheight'`
 
-e.g 
+Example:
+
 ```bash
 slides2html --website /tmp/revealjs --id 'https://docs.google.com/presentation/d/1N8YWE7ShqmhQphT6L29-AcEKZfZg2QripM4L0AK8mSU/edit#slide=id.p' --credfile ~/service_credentials.json --themefile themes/basictheme.html --serviceaccount --background 'https://docs.google.com/presentation/d/1F6abB7ceOROpmbaMIWcx9RNbW_oIiLg8B5J77M5hy3s/edit#slide=id.p' --resize '200,200'
 credfile:  /home/xmonader
@@ -126,28 +129,26 @@ slides2html --website /tmp/revealjs --id 1N8YWE7ShqmhQphT6L29-AcEKZfZg2QripM4L0A
 ### Creating custom theme
 
 ```html
-    <!-- base html code ommitted-->
-		<div class="reveal">
-			<div class="slides">
-                {% for slideinfo in slidesinfos %}
-				<section>
-					<div class="presentation-title">{{presentation_title}}</div>
-					<!-- <div class="slide-meta">
-						<ul>
-						{% for el in slideinfo['slide_meta'] %}
-							<li class="slide-meta-item">
-								{{el}}
-							</li>
-						{% endfor %}
-						<ul>
-					</div> -->
-					<div class="slide-image">
-					{{slideinfo['slide_image']}}
-					</div>
-				</section>
-                {% endfor %}
-			</div>
-    </div>
+<!-- base html code ommitted-->
+<div class="reveal">
+  <div class="slides">
+    {% for slideinfo in slidesinfos %}
+    <section>
+      <div class="presentation-title">{{presentation_title}}</div>
+      <!-- <div class="slide-meta">
+            <ul>
+            {% for el in slideinfo['slide_meta'] %}
+              <li class="slide-meta-item">
+                {{el}}
+              </li>
+            {% endfor %}
+            <ul>
+          </div> -->
+      <div class="slide-image">{{slideinfo['slide_image']}}</div>
+    </section>
+    {% endfor %}
+  </div>
+</div>
 ```
 
 Templates are rendered with

@@ -11,12 +11,12 @@ The tool converts the slides of a (Google) presentation into images (PNG) using 
 Using [Google console](https://console.developers.google.com/flows/enableapi?apiid=slides.googleapis.com)
 
 ### Normal account
-You need to enable and download credentials files using [Google console](https://console.developers.google.com/flows/enableapi?apiid=slides.googleapis.com) or go to [Python Quickstart](https://developers.google.com/slides/quickstart/python) and choose enable slides API then download configurations.
+You need to enable and download credentials files using [Google console](https://console.cloud.google.com/apis/credentials) or go to [Python Quickstart](https://developers.google.com/slides/quickstart/python) and choose enable slides API then download configurations.
 
 ### Service account
 - Create project
 - Create credentials (type service account)
-You need to enable and download credentials files using  or go to [Python Quickstart](https://developers.google.com/slides/quickstart/python) and choose enable slides API then download configurations.
+You need to enable and download credentials files using or go to [Python Quickstart](https://developers.google.com/slides/quickstart/python) and choose enable slides API then download configurations.
 - Download credentials (as json and save it anywhere on your filesystem)
 
 ## Installation
